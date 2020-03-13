@@ -51,7 +51,7 @@ const actions = {
     commit("removeTodo", id);
   },
    addTodo({ commit }, title) {
-    const new_index =  state.todos.length
+    const new_index = state.todos[state.todos.length - 1].id + 1
     const response =  {
             "userId": 1,
             "id": new_index ,
@@ -69,8 +69,11 @@ const actions = {
 const mutations = {
   setTodos: (state, todos) => (state.todos = todos),
   newTodo: (state, todo) => state.todos.push(todo),
-  removeTodo: (state, id) =>
-    (state.todos = state.todos.filter(t => t.id !== id)),
+  removeTodo: (state, id) => {
+    /* eslint-disable-next-line */
+    console.log(state.todos)
+    return state.todos = state.todos.filter(t => t.id !== id)
+  },
   updateTodo: (state, updTodo) => {
     const index = state.todos.findIndex(t => t.id === updTodo.id);
     if (index !== -1) {

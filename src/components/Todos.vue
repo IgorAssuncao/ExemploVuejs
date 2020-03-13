@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>Todos</h3>
+    <AddTodo></AddTodo>
     <div class="legend">
       <span>Double click to mark as complete</span>
       <span>
@@ -27,6 +28,9 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+
+import AddTodo from "./AddTodo";
+
 export default {
   name: "todos",
   methods: {
@@ -43,6 +47,9 @@ export default {
   computed: mapGetters(["allTodos"]),
   created() {
     this.fetchTodos();
+  },
+  components: {
+    AddTodo
   }
 };
 </script>
